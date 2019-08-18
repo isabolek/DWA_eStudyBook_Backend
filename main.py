@@ -7,13 +7,6 @@ app = Flask(__name__)
 CORS(app)
 
 
-
-@app.route("/")
-def home():
-    r = Response(status=200)
-    r.set_data("Ovo je početna stranica.")
-    return r
-
 # studenti 
 
 @app.route("/studenti", methods=["GET"])
@@ -23,8 +16,8 @@ def ispisi_studente():
 
 @app.route("/studenti/<jmbag>", methods=["GET"])
 def ispisi_studenta(jmbag):
-    jmbag = str(jmbag)
-    student = Student1.ispisi_studenta(jmbag)
+    email = str(jmbag)
+    student = Student1.ispisi_studenta(email)
     return jsonify(student)
 
 @app.route("/studenti", methods=["POST"])
@@ -61,7 +54,6 @@ def prijava_profesora(email, lozinka):
     return jsonify(prijava)
 
 
-
 # profesori
 
 @app.route("/profesori", methods=["GET"])
@@ -84,6 +76,7 @@ def obrisi_profesora(oib_profesora):
     profesor_oib = str(oib_profesora)
     pro = Profesor1.obrisi(profesor_oib)
     return jsonify(pro)
+
 
 # popis kolegija
 
@@ -115,7 +108,6 @@ def ispisi_kolegij(ime_kolegija):
     pkolegij = Kolegij1.ispisi_kolegij(kolegij_id)
     return jsonify(pkolegij)
 
-'''unutar novog kolegija da se doda sve unutra, isto tako da se unutar već postojećeg kolegija doda neka nova stavka'''
 
 # popis repozitorija
 
@@ -177,7 +169,9 @@ def ispisi_jednu_novost(id_novosti):
     novosti = Novosti1.ispisi_novost(novost_id).to_dict()
     return jsonify(novosti)
 
+
 #kalendar
+
 @app.route("/kalendar", methods=["GET"])
 def ispisi_sve_ispite():
     kalendar = Kalendar1.ispisi()

@@ -18,6 +18,7 @@ class Student1:
             return True, None
         except Exception as e:
             return False, str(e)
+            
     @db_session
     def obrisi(jmbag_studenta):
         Student[jmbag_studenta].delete()
@@ -51,7 +52,6 @@ class Profesor1:
     @db_session
     def dodaj(s):
         try:
-         #  s["id_kolegija_rep"] = str(gid()) # ovo je da se id generira nekom radnom, možda bi to trebale ostaviti jer tako nam id nikad neće biti isti
             s = Profesor(**s)
             return True, None
         except Exception as e:
@@ -92,7 +92,7 @@ class Kolegij1:
 
     @db_session
     def obrisi(id_kolegija):
-        Kolegij[id_kolegija].delete()        #brise cijeli sastav kolegija (klasa Kolegij)
+        Kolegij[id_kolegija].delete()        
         return "Kolegij je obrisan."
 
     @db_session
@@ -161,7 +161,6 @@ class Kalendar1:
     @db_session
     def dodaj(s):
         try:
-            # s["id"] = str(gid()) # ovo je da se id generira nekom radnom, možda bi to trebale ostaviti jer tako nam id nikad neće biti isti
             s = Kalendar(**s)
             return True, None
         except Exception as e:
