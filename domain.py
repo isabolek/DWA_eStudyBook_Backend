@@ -23,12 +23,7 @@ class Student1:
     def obrisi(jmbag_studenta):
         Student[jmbag_studenta].delete()
         return "Student je obrisan."
-    
-    @db_session
-    def ispisi_studenta(email):
-        student = Student.get(email_studenta = email)
-        return student.to_dict()
-    
+
     @db_session
     def prijava1(email, lozinka):
         student = Student.get(email_studenta = email)

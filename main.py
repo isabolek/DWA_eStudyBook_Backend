@@ -14,12 +14,6 @@ def ispisi_studente():
     studenti = Student1.ispisi()
     return jsonify({"data": studenti})
 
-@app.route("/studenti/<jmbag>", methods=["GET"])
-def ispisi_studenta(jmbag):
-    email = str(jmbag)
-    student = Student1.ispisi_studenta(email)
-    return jsonify(student)
-
 @app.route("/studenti", methods=["POST"])
 def dodaj_studenta():
     status, greske = Student1.dodaj(request.get_json())
